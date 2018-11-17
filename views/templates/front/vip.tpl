@@ -10,64 +10,54 @@
 
 {capture name=path}
 	<a href="{$link->getPageLink('my-account', true)|escape:'html':'UTF-8'}">
-		{l s='Mon compte' mod='okom_vip'}
+		{l s='My account' mod='okom_vip'}
 	</a>
 	<span class="navigation-pipe">{$navigationPipe}</span>
-	<span class="navigation_page">{l s='Ma carte VIP'}</span>
+	<span class="navigation_page">{l s='My VIP Card'}</span>
 {/capture}
 
-<h1 class="page-heading bottom-indent">{l s='Ma Carte VIP' mod='okom_vip'}</h1>
+<h1 class="page-heading bottom-indent">{l s='My VIP Card' mod='okom_vip'}</h1>
 
 
 {if $is_vip == false && !isset($vip_cards)}
 
 	<div class="well well-sm">
-		{l s='Pas encore membre VIP, profitez d\'avantages avec notre carte VIP !' mod='okom_vip'}
+		{l s='Not yet a VIP member, enjoy benefits with our VIP card!' mod='okom_vip'}
 		<br/><br/>
-		{l s='Livraison Offerte dès 25€' mod='okom_vip'}<br/>
-		{l s='Commande prioritaire' mod='okom_vip'}<br/>
-		{l s='Des offres de folies réservées aux membres VIP' mod='okom_vip'}<br/><br/>
+		{l s='Free Delivery from 25 €' mod='okom_vip'}<br/>
+		{l s='Priority order' mod='okom_vip'}<br/>
+		{l s='Offers reserved for VIP members' mod='okom_vip'}<br/><br/>
 
-		<a class="button button-small btn btn-default" href="{$vip_product_url}"><span>{l s='Devenir membre VIP !' mod='okom_vip'}</span></a><br/><br/>
+		<a class="button button-small btn btn-default" href="{$vip_product_url}"><span>{l s='Become a VIP member!' mod='okom_vip'}</span></a><br/><br/>
 
-		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='Devenez client Vip' mod='okom_vip'}'>
+		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='Become a VIP member!' mod='okom_vip'}'>
 	</div>
 
 {else if $is_vip == true && $exprired == false}
 
 	<div class="well well-sm">
-		<div style="text-align: center"><h3>{l s='Votre carte VIP et avantages expire le' mod='okom_vip'} {$customer_vip['vip_end']}</h3></div>
-		Ma/Mes Carte(s) VIP
+		<div style="text-align: center"><h3>{l s='Your VIP card and benefits expires on' mod='okom_vip'} {$customer_vip['vip_end']}</h3></div>
+		{l s='my VIP card(s)' mod='okom_vip'}
 		<br/><br/>
 		{foreach $vip_cards item='vip_card'}
-
-		<li>{if $vip_card.expired == 0}<i class="icon-check"></i>{else}<i class="icon-remove"></i>{/if} Abonnement du {$vip_card.vip_add} au {$vip_card.vip_end}</li>
-
+		<li>{if $vip_card.expired == 0}<i class="icon-check"></i>{else}<i class="icon-remove"></i>{/if}{l s=' Subscription of ' mod='okom_vip'}{$vip_card.vip_add}{l s=' the ' mod='okom_vip'}{$vip_card.vip_end}</li>
 		{/foreach}	
 		<br/><br/>
-		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='Vous êtes client VIP' mod='okom_vip'}'>
+		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='You are a VIP customer' mod='okom_vip'}'>
 	</div>
 
 	{else}
-
 	<div class="well well-sm">		
-		{l s='Votre abonnement VIP est terminé.' mod='okom_vip'}<br/>
-		{l s='Vous pouvez le renouveler dès maintenant.' mod='okom_vip'}
+		{l s='Your VIP subscription is complete.' mod='okom_vip'}<br/>
+		{l s='You can renew it now.' mod='okom_vip'}
 		<br/><br/>
-		<a class="button button-small btn btn-default" href="{$vip_product_url}"><span>{l s='Devenir membre VIP !' mod='okom_vip'}</span></a>
+		<a class="button button-small btn btn-default" href="{$vip_product_url}"><span>{l s='Become a VIP member!' mod='okom_vip'}</span></a>
 		<br/><br/>
-
 		{l s='My old vip Cards' mod='okom_vip'}
 		{foreach $vip_cards item='vip_card'}
-
-		<li>{if $vip_card.expired == 0}<i class="icon-check"></i>{else}<i class="icon-remove"></i>{/if} Abonnement du {$vip_card.vip_add} au {$vip_card.vip_end}</li>
-
+		<li>{if $vip_card.expired == 0}<i class="icon-check"></i>{else}<i class="icon-remove"></i>{/if}{l s=' Subscription of ' mod='okom_vip'}{$vip_card.vip_add}{l s=' the ' mod='okom_vip'}{$vip_card.vip_end}</li>
 		{/foreach}			
-
-
 		<br/><br/>
-		
-		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='Abonnement VIP expiré' mod='okom_vip'}'>
+		<img class="img-responsive" src='{$modules_dir}/okom_vip/img/vip.png' alt='{l s='Expired VIP subscription' mod='okom_vip'}'>
 	</div>
-
 {/if}
